@@ -7,13 +7,14 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
+require("dotenv").config();
+
 var app = express();
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB =
-  "mongodb+srv://admin:m4IoSbbyIl6h5eJR@cluster0.etinpq6.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB = `mongodb+srv://admin:${MONGO_DB_KEY}@cluster0.etinpq6.mongodb.net/?retryWrites=true&w=majority`;
 
 mainModule().catch((err) => console.log(err));
 async function main() {
