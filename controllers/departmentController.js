@@ -1,4 +1,5 @@
 const Department = require("../models/department");
+const Manufacturer = require("../models/manufacturer");
 const Instrument = require("../models/instrument");
 
 const asyncHandler = require("express-async-handler");
