@@ -3,20 +3,24 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const port = process.env.PORT || 3000;
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
-require("dotenv").config();
-
 var app = express();
+
+require("dotenv").config();
+// app.get("/", (req, res) => {
+//   res.send(process.env.MONGO_DB_KEY);
+// });
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = `mongodb+srv://admin:${MONGO_DB_KEY}@cluster0.etinpq6.mongodb.net/?retryWrites=true&w=majority`;
+const mongoDB = `mongodb+srv://admin:${process.env.MONGO_DB_KEY}@cluster0.etinpq6.mongodb.net/?retryWrites=true&w=majority`;
 
-mainModule().catch((err) => console.log(err));
+main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
 }
