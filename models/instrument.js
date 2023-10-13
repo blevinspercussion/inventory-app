@@ -19,7 +19,7 @@ const InstrumentSchema = new Schema({
 });
 
 InstrumentSchema.virtual("url").get(function () {
-  return `/catalog/instruments/${this._id}`;
+  return `/catalog/instrument/${this._id}`;
 });
 
 module.exports = mongoose.model("Instrument", InstrumentSchema);

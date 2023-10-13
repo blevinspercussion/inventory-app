@@ -2,4 +2,7 @@ extends layout
 
 block content 
     .main-content
-        h1=title
+        h1 #{instrument.name}
+        p by #[strong #{instrument.manufacturer.name}]
+        p #{instrument.description}
+        p.price #[strong $#{instrument.price}]

@@ -36,9 +36,11 @@ exports.instrument_list = asyncHandler(async (req, res, next) => {
 
 // Display detail page for specific instrument
 exports.instrument_detail = asyncHandler(async (req, res, next) => {
-  const instrument = await Promise.all([
-    Instrument.findById(req.params.id).populate("manufacturer").exec(),
-  ]);
+  const instrument = await Instrument.findById(req.params.id)
+    .populate("manufacturer")
+    .populate("department")
+    .exec();
+
   if (instrument === null) {
     const err = new Error("Instrument not found");
     err.status = 404;
@@ -46,7 +48,7 @@ exports.instrument_detail = asyncHandler(async (req, res, next) => {
   }
 
   res.render("instrument_detail", {
-    name: instrument.name,
+    title: "Instrument",
     instrument: instrument,
   });
 });
