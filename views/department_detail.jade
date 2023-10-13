@@ -3,3 +3,8 @@ extends layout
 block content 
     .main-content
         h1=title
+        
+        ul
+            each instrument in department_instruments 
+                li
+                    a(href=instrument.url) #{instrument.name} 
