@@ -3,8 +3,16 @@ extends layout
 block content 
     .main-content
         h1=title
+        h2 #{department.name}
         
         ul
             each instrument in department_instruments 
                 li
                     a(href=instrument.url) #{instrument.name} 
+
+        hr
+        p 
+            a(href=department.url+'/delete') Delete Department 
+        
+        p 
+            a(href=department.url+'/update') Update Department 

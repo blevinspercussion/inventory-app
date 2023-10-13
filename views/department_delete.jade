@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+
+    div.main-content
+
+        h1 #{title}: #{department.name} 
+
+        p Do you really want to delete this department? 
+
+        form(method="POST" action="") 
+            div.form-group 
+                input#departmentid.form-control(type='hidden',name='departmentid',required='true',value=department._id) 
+
+            button(type='submit') Delete
