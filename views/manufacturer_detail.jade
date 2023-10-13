@@ -2,4 +2,8 @@ extends layout
 
 block content 
     .main-content
-        h1=title
+        h1 #{manufacturer.name}
+        ul
+            each instrument in manufacturer_instruments 
+                li 
+                    a(href=instrument.url) #{instrument.name} 

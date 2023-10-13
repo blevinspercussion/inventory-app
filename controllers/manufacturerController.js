@@ -1,4 +1,5 @@
 const Manufacturer = require("../models/manufacturer");
+const Instrument = require("../models/instrument");
 
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
