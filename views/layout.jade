@@ -3,5 +3,14 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+  block sidebar 
+    ul(class='sidebar-nav')
+      li 
+        a(href="/catalog") Home 
+      li 
+        a(href="/catalog/departments") All Departments 
+      li 
+        a(href="/catalog/instruments") All Instruments 
+      li 
+        a(href="/catalog/manufacturers") All Manufacturers  
     block content
