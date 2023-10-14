@@ -6,3 +6,9 @@ block content
         p by #[strong #{instrument.manufacturer.name}]
         p #{instrument.description}
         p.price #[strong $#{instrument.price}]
+
+        hr
+        p 
+            a(href=instrument.url+'/delete') Delete Instrument 
+        p 
+            a(href=instrument.url+'/update') Update Department  
