@@ -81,7 +81,7 @@ exports.instrument_create_post = [
     .trim()
     .isLength({ min: 1 })
     .escape(),
-  price("price", "Price must not be empty.")
+  body("price", "Price must not be empty.")
     .trim()
     .isLength({ min: 1 })
     .escape(),
@@ -172,7 +172,7 @@ exports.instrument_update_post = [
     .trim()
     .isLength({ min: 1 })
     .escape(),
-  price("price", "Price must not be empty.")
+  body("price", "Price must not be empty.")
     .trim()
     .isLength({ min: 1 })
     .isInt()
@@ -180,7 +180,7 @@ exports.instrument_update_post = [
     .escape(),
 
   // Process request after validation and sanitization
-  asyncHandeler(async (req, res, next) => {
+  asyncHandler(async (req, res, next) => {
     // Extract the validation errors from a request
     const errors = validationResult(req);
 

@@ -33,3 +33,33 @@ exports.manufacturer_detail = asyncHandler(async (req, res, next) => {
     manufacturer_instruments: instrumentsByManufacturer,
   });
 });
+
+// Display Manufacturer create form on GET
+exports.manufacturer_create_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Manufacturer create GET");
+});
+
+// Handle Manufacturer create on POST
+exports.manufacturer_create_post = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Manufacturer create POST");
+});
+
+// Display Manufacturer delete form on GET
+exports.manufacturer_delete_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Manufacturer delete GET");
+});
+
+// Handle Manufacturer delete on POST
+exports.manufacturer_delete_post = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Manufacturer delete POST");
+});
+
+// Display Manufacturer update form on GET
+exports.manufacturer_update_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Manufacturer update GET");
+});
+
+// Handle Manufacturer update on POST
+exports.manufacturer_update_get = asyncHandler(async (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Manufacturer update POST");
+});
