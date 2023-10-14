@@ -30,7 +30,7 @@ block content
                             option(value=manufacturer._id) #{manufacturer.name}
             div.form-group 
                 label(for="description") Description: 
-                input#description.form-control(type="textarea", placeholder='Description of instrument', name='description', required='true', value=(undefined===instrument ? '' : instrument.description))
+                input#description.form-control(type="textarea", placeholder='Description of instrument', name='description', required='true',rows='5' value=(undefined===instrument ? '' : instrument.description))
             div.form-group 
                 label(for='price') Price: 
                 input#price.form-control(type="text", placeholder="Price of instrument", name='price',required='true', value=(undefined===instrument ? '' : instrument.price)) 

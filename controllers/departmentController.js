@@ -54,12 +54,12 @@ exports.department_create_post = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
-    // Creat Department object with escaped and trimmed data
+    // Create Department object with escaped and trimmed data
     const department = new Department({
       name: req.body.name,
     });
 
-    if (!errors.isEmpty) {
+    if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/error messages
       res.render("department_form", {
         name: "Create Department",
@@ -165,7 +165,7 @@ exports.department_update_post = [
 
       res.render("department_form", {
         title: "Update Department",
-        departments: allDepartments,
+        department: department,
         instruments: allInstruments,
         manufacturers: allManufacturers,
         errors: errors.array(),
