@@ -6,6 +6,7 @@ const department_controller = require("../controllers/departmentController");
 const manufacturer_controller = require("../controllers/manufacturerController");
 const instrument_controller = require("../controllers/instrumentController");
 const department = require("../models/department");
+const instrument = require("../models/instrument");
 
 // GET catalog home page
 router.get("/", instrument_controller.index);
@@ -59,7 +60,7 @@ router.get(
 // POST request for creating a manufacturer
 router.post(
   "/manufacturer/create",
-  manufacturer_controllel.manufacturer_create_post
+  manufacturer_controller.manufacturer_create_post
 );
 
 // GET request for one manufacturer
@@ -99,5 +100,35 @@ router.get("/instrument/:id", instrument_controller.instrument_detail);
 
 // GET request for all instruments
 router.get("/instruments", instrument_controller.instrument_list);
+
+// GET request to create an instrument
+router.get("/instrument/create", instrument_controller.instrument_create_get);
+
+// POST request to create an instrument
+router.post("/instrument/create", instrument_controller.instrument_create_post);
+
+// GET request to delete an instrument
+router.get(
+  "/instrument/:id/delete",
+  instrument_controller.instrument_delete_get
+);
+
+// POST request to delete an instrument
+router.post(
+  "/instrument/:id/delete",
+  instrument_controller.instrument_delete_post
+);
+
+// GET request to update an instrument
+router.get(
+  "/instrument/:id/update",
+  instrument_controller.instrument_update_get
+);
+
+// POST request to update an instrument
+router.post(
+  "/instrument/:id/update",
+  instrument_controller.instrument_update_post
+);
 
 module.exports = router;

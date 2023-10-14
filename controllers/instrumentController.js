@@ -42,6 +42,12 @@ exports.instrument_detail = asyncHandler(async (req, res, next) => {
     .populate("department")
     .exec();
 
+  // const [instrument, allDepartments, allManufacturers] = await Promise.all([
+  //   Instrument.findById(req.params.id).exec(),
+  //   Department.find().exec(),
+  //   Manufacturer.find().exec(),
+  // ]);
+
   if (instrument === null) {
     const err = new Error("Instrument not found");
     err.status = 404;
@@ -54,9 +60,12 @@ exports.instrument_detail = asyncHandler(async (req, res, next) => {
   });
 });
 
-// Display instrmunent create form on GET
+// Display instrument create form on GET
+// exports.instrument_create_get = (req, res, next) => {
+//   res.render("instrument_form", { title: "Create Instrument" });
+// };
 exports.instrument_create_get = (req, res, next) => {
-  res.render("instrument_form", { title: "Create Instrument" });
+  res.send("debug");
 };
 
 // Handle instrument create on POST
@@ -66,9 +75,7 @@ exports.instrument_create_post = [
     .trim()
     .isLength({ min: 1 })
     .escape()
-    .withMessage("Name must be specified.")
-    .isAlphanumeric()
-    .withMessage("Name contains non-alphanumeric characters."),
+    .withMessage("Name must be specified."),
   body("department", "Department must not be empty.")
     .trim()
     .isLength({ min: 1 })
@@ -108,7 +115,7 @@ exports.instrument_create_post = [
 
 // Display instrument delete form on GET
 exports.instrument_delete_get = asyncHandler(async (req, res, next) => {
-  const instrument = await Promise(Instrument.findById(req.params.id).exec());
+  const instrument = await Instrument.findById(req.params.id).exec();
 
   if (instrument === null) {
     res.redirect("/catalog/instruments");
@@ -121,8 +128,9 @@ exports.instrument_delete_get = asyncHandler(async (req, res, next) => {
 });
 
 // Handle instrument delete on POST
-exports.instrument_delete_post = asyncHandler(async (req, nes, next) => {
-  const instrument = await Promise(Instrument.findById(req.params.id).exec());
+exports.instrument_delete_post = asyncHandler(async (req, res, next) => {
+  // const instrument = await Instrument.findById(req.params.id).exec();
+  console.log("button pressed");
 
   await Instrument.findByIdAndRemove(req.body.instrumentid);
   res.redirect("/catalog/instruments");
@@ -157,9 +165,7 @@ exports.instrument_update_post = [
     .trim()
     .isLength({ min: 1 })
     .escape()
-    .withMessage("Name must be specified.")
-    .isAlphanumeric()
-    .withMessage("Name contains non-alphanumeric characters."),
+    .withMessage("Name must be specified."),
   body("department", "Department must not be empty.")
     .trim()
     .isLength({ min: 1 })

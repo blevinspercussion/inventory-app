@@ -60,6 +60,6 @@ exports.manufacturer_update_get = asyncHandler(async (req, res, next) => {
 });
 
 // Handle Manufacturer update on POST
-exports.manufacturer_update_get = asyncHandler(async (req, res, next) => {
+exports.manufacturer_update_post = asyncHandler(async (req, res, next) => {
   res.send("NOT IMPLEMENTED: Manufacturer update POST");
 });

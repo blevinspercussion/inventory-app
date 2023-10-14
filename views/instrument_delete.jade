@@ -8,7 +8,8 @@ block content
 
         p Do you really want to delete this instrument? 
 
-        for(method="POST", action='') 
+        form(method="POST", action='') 
             div.form-group 
                 input#instrumentid.form-control(type='hidden',name='instrumentid',required='true', value=instrument._id)
+            
             button(type='submit') Delete
