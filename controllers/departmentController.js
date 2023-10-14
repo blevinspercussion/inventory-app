@@ -62,7 +62,8 @@ exports.department_create_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/error messages
       res.render("department_form", {
-        name: "Create Department",
+        title: "Create Department",
+        errors: errors.array(),
       });
       return;
     } else {

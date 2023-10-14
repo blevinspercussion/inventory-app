@@ -35,7 +35,7 @@ exports.manufacturer_detail = asyncHandler(async (req, res, next) => {
 });
 
 // Display Manufacturer create form on GET
-exports.manufacturer_create_get = (res, res, next) => {
+exports.manufacturer_create_get = (req, res, next) => {
   res.render("manufacturer_form", { title: "Create Manufacturer" });
 };
 
@@ -60,7 +60,8 @@ exports.manufacturer_create_post = [
     });
     if (!errors.isEmpty()) {
       res.render("manufacturer_form", {
-        name: "Create Manufacturer",
+        title: "Create Manufacturer",
+        errors: errors.array(),
       });
       return;
     } else {
@@ -71,7 +72,7 @@ exports.manufacturer_create_post = [
 ];
 
 // Display Manufacturer delete form on GET
-exports.department_delete_get = asyncHandler(async (req, res, next) => {
+exports.manufacturer_delete_get = asyncHandler(async (req, res, next) => {
   // Get manufacturer and all associated instruments
   const [manufacturer, allInstrumentsByManufacturer] = await Promise.all([
     Manufacturer.findById(req.params.id).exec(),
@@ -82,7 +83,7 @@ exports.department_delete_get = asyncHandler(async (req, res, next) => {
     res.redirect("/catalog/manufacturers");
   }
 
-  res.render("/manufacturer_delete", {
+  res.render("manufacturer_delete", {
     title: "Delete Manufacturer",
     manufacturer: manufacturer,
     manufacturer_instruments: allInstrumentsByManufacturer,
@@ -111,7 +112,7 @@ exports.manufacturer_delete_post = asyncHandler(async (req, res, next) => {
 });
 
 // Display Manufacturer update form on GET
-exports.manufacturer_update_get = anyscHandler(async (req, res, next) => {
+exports.manufacturer_update_get = asyncHandler(async (req, res, next) => {
   const [manufacturer, allDepartments, allInstruments] = await Promise.all([
     Manufacturer.findById(req.params.id).exec(),
     Department.find().exec(),

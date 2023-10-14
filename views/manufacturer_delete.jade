@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+
+    .main-content 
+        h1 #{title}: #{manufacturer.name}
+
+        p Do you really want to delete this manufacturer? 
+
+        form(method='POST' action='') 
+            div.form-group 
+                input#manufacturerid.form-control(type='hidden' name='manufacturerid' required='true' value=manufacturer._id)
+            
+            button(type='submit') Delete

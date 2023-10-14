@@ -7,3 +7,9 @@ block content
             each instrument in manufacturer_instruments 
                 li 
                     a(href=instrument.url) #{instrument.name} 
+
+        hr 
+        p 
+            a(href=manufacturer.url+'/delete') Delete Manufacturer 
+        p 
+            a(href=manufacturer.url+'/update') Update Manufacturer  
