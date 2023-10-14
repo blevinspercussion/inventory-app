@@ -175,6 +175,8 @@ exports.instrument_update_post = [
   price("price", "Price must not be empty.")
     .trim()
     .isLength({ min: 1 })
+    .isInt()
+    .withMessage("Price must be an integer.")
     .escape(),
 
   // Process request after validation and sanitization

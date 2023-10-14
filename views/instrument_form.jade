@@ -1,0 +1,41 @@
+extends layout 
+
+block content 
+
+    .main-content 
+
+        h1=title 
+
+        form(method='POST' action='')
+            div.form-group 
+                label(for="name") Name:  
+                input#name.form-control(type='text', placeholder="Name of instrument",name='name',required='true',value=(undefined===instrument ? '' : instrument.name))
+            div.form-group 
+                label(for='department') Department: 
+                select#department.form-control(type='select', placeholder='Select department', name='department', required='true') 
+                - departments.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}); 
+                for department in departments 
+                    if instrument 
+                        option(value=department._id selected=(department._id.toString()===instrument.department._id.toString() ? 'selected' : false)) #{department.name} 
+                    else 
+                        option(value=department._id) #{department.name} 
+            div.form-group 
+                label(for='manufacturer') Manufacturer: 
+                select#manufacturer.form-control(type='select', placeholder='Select manufacturer', name='manufacturer', required='true')
+                - manufacturers.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+                for manufacturer in manufacturers 
+                    if instrument 
+                        option(value=manufacturer._id selected=(manufacturer._id.toString()===instrument.manufacturer._id.toString() ? 'selected' : false)) #{manufacturer.name} 
+                    else 
+                        option(value=manufacturer._id) #{manufacturer.name}
+            div.form-group 
+                label(for="description") Description: 
+                input#description.form-control(type="textarea", placeholder='Description of instrument', name='description', required='true', value=(undefined===instrument ? '' : instrument.description))
+            div.form-group 
+                label(for='price') Price: 
+                input#price.form-control(type="text", placeholder="Price of instrument", name='price',required='true', value=(undefined===instrument ? '' : instrument.price)) 
+
+        if errors 
+            ul 
+                for error in errors 
+                    li!= error.msg
