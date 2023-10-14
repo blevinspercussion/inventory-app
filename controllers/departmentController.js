@@ -97,7 +97,7 @@ exports.department_delete_get = asyncHandler(async (req, res, next) => {
 
 // Handle Department delete on POST
 exports.department_delete_post = asyncHandler(async (req, res, next) => {
-  // Get details of departmest and all associated books (in paraller)
+  // Get details of department and all associated books (in parallel)
   const [department, allInstrumentsInDepartment] = await Promise.all([
     Department.findById(req.params.id).exec(),
     Instrument.find({ department: req.params.id }, "name description").exec(),
